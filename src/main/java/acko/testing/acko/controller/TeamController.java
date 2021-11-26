@@ -22,7 +22,6 @@ public class TeamController {
             teamCreationService.saveTeamAndDeveloper(teamData);
             return new ResponseEntity("Team created successfully",HttpStatus.OK);
         }catch (Exception e) {
-            //todo notification alert
             return new ResponseEntity("Error while creating team",HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }

@@ -1,8 +1,6 @@
 package acko.testing.acko.util;
 
-import org.springframework.http.HttpEntity;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpMethod;
+import org.springframework.http.*;
 import org.springframework.web.client.RestTemplate;
 
 import java.util.HashMap;
@@ -14,7 +12,11 @@ public class NotificationRestHelper {
 
     public boolean sendAlert(Map<String,Object> data) {
         RestTemplate restTemplate=new RestTemplate();
-//        restTemplate.exchange(url, HttpMethod.POST,);
+        HttpHeaders headers = new HttpHeaders();
+        headers.setContentType(MediaType.APPLICATION_JSON);
+
+        HttpEntity entity = new HttpEntity(data,headers);
+        ResponseEntity<Object> responseEntity=restTemplate.exchange(url, HttpMethod.POST,entity,Object.class);
         return true;
     }
 

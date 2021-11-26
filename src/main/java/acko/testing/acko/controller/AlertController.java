@@ -18,9 +18,9 @@ public class AlertController {
     public ResponseEntity sendAlert(@RequestBody Map<String,Object> notificationData) {
         try {
             notificationSendingService.sendNotificationAlert(notificationData);
-            return new ResponseEntity("Team created successfully", HttpStatus.OK);
+            return new ResponseEntity("Alert send successfully", HttpStatus.OK);
         }catch (Exception e) {
-            return new ResponseEntity("Error while creating team",HttpStatus.INTERNAL_SERVER_ERROR);
+            return new ResponseEntity("Error in sending alert",HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
 }

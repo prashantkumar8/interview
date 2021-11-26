@@ -33,13 +33,12 @@ public class TeamCreationServiceImpl implements TeamCreationService {
         team.setName((String)teamData.get("name"));
         Team teamPersistentObject=teamRepository.save(team);
 
-        saveDevelopers((Map<String,Object>)data.get("developers"),teamPersistentObject.getId());
+        saveDevelopers((List<Map<String,Object>>)data.get("developers"),teamPersistentObject.getId());
     }
 
-    private void saveDevelopers(Map<String,Object> data,Long teamId){
-        List<Map<String,Object>> developersData=new ArrayList<>();
+    private void saveDevelopers(List<Map<String,Object>> data,Long teamId){
         List<Developer> dataToSave=new ArrayList<>();
-        for(Map<String,Object> developer:developersData) {
+        for(Map<String,Object> developer:data) {
             Developer temp=new Developer();
             temp.setName((String)developer.get("name"));
             temp.setPhoneNumber((String)developer.get("phone_number"));
